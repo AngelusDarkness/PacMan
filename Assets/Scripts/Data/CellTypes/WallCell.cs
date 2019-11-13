@@ -2,8 +2,4 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WallCell : CellData {
-    
-    
-    
-}
+public class WallCell : CellData {  }

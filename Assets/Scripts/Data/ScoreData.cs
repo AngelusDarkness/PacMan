@@ -10,8 +10,6 @@ public class ScoreData : ScriptableObject {
     //Dynamic data
     [NonSerialized] private int score;
 
-
-
     public void UpdateScore(int multiplier) {
         score += baseScore * multiplier;
     }

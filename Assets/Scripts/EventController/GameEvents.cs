@@ -4,9 +4,9 @@ using UnityEngine;
 namespace Events{
     public class GameEvent  { }
 
+    public class BigPelletEvent : GameEvent { }
 
-   
-    
+
 }
 
 
