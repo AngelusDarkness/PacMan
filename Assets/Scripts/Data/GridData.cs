@@ -1,5 +1,7 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class GridData : ScriptableObject {
@@ -11,17 +13,24 @@ public class GridData : ScriptableObject {
     public List<CellData> cellSourceData;
 
     //Private attributes
-    private List<CellData> cellState;
+    private List<CellData> gridStates { get;  set; }
     
+    public void Load() {
+        gridStates = new List<CellData>(cellSourceData);
+    }
+
     
-    public void BuildGrid() {
-        //Generate rows of columns
-        for (var i = 0; i < gridSize.x; i++) {
-            for (var  j = 0; j < gridSize.y; j++) {
-                
-            }
-        }
+    public CellData GetCell(int x, int y) {
+        return gridStates.Find(cell =>
+            cell.logicalPosition.x == x && cell.logicalPosition.y == y);
+    }
 
-
+    public void UpdateCellState(CellData currentData, CellData newData) {
+        currentData.oldData = currentData;
+        currentData = newData;
+        
+        //Update Data on List
+        var idx = gridStates.FindIndex(cell => cell.GetInstanceID() == currentData.GetInstanceID());
+        gridStates[idx] = currentData;
     }
 }

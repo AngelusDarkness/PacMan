@@ -10,6 +10,11 @@ public class SpawnerCell : CellData {
     [SerializeField] private Transform _spawnPosition;
 
     [NonSerialized] private GameObject _spawnedAgent; 
+    
+    public override void Load() {
+        
+    }
+    
     public void Spawn() {
         if (_spawnedAgent == null) {
             _spawnedAgent = Instantiate(_agentToSpawn, _spawnPosition.position, _spawnPosition.rotation);    

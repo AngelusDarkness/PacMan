@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,12 +14,14 @@ public enum  CellTypes{
     KNone
 }
 
-public class CellData : ScriptableObject {
-    public string cellID;
-    public CellTypes cellType;
-
-
-    public void Action() {
-        //Do something...
-    }
+public abstract class CellData : ScriptableObject {
+    public Vector2Int logicalPosition;
+    public CellTypes srcCellType;
+    public bool isWalkable = true;
+    
+    [NonSerialized] public CellData oldData;
+    
+    
+    [NonSerialized] private CellTypes _cellType;
+    public abstract void Load();
 }

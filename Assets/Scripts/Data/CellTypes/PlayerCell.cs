@@ -6,7 +6,11 @@ using UnityEngine;
 
 public class PlayerCell : CellData, ITriggerable, IWarpable {
     [SerializeField] private ScoreData _scoreData;
-    [NonSerialized] private int _life = 3;
+    [NonSerialized] private int _health = 3;
+
+    public override void Load() {
+        
+    }
     
     public void UpdateScore(int multiplier) {
         _scoreData.UpdateScore(multiplier);
@@ -26,11 +30,11 @@ public class PlayerCell : CellData, ITriggerable, IWarpable {
         if (ghost.isBlue) {
             UpdateScore(ghost.scoreMultiplier);
         } else {
-            if (_life <= 0) return;
+            if (_health <= 0) return;
             
-            _life--;
+            _health--;
                 
-            if (_life == 0) {
+            if (_health == 0) {
                 //GameOver
             } else {
                 //Respawn

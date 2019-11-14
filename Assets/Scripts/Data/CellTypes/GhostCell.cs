@@ -20,6 +20,9 @@ public class GhostCell : CellData, ITriggerable, IWarpable {
             //Respawn
         } 
     }
-    
-    
+
+
+    public override void Load() {
+        
+    }
 }
