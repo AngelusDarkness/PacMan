@@ -20,8 +20,20 @@ public abstract class CellData : ScriptableObject {
     public bool isWalkable = true;
     
     [NonSerialized] public CellData oldData;
-    
-    
+    [NonSerialized] private GameObject _owner;
     [NonSerialized] private CellTypes _cellType;
-    public abstract void Load();
+
+    public virtual void Load() {
+        
+    }
+
+    public virtual void Load(GameObject owner ) {
+        _owner = owner;
+    }
+    
+    
+
+    public Vector3 GetPosition() {
+        return _owner.transform.position;
+    }
 }

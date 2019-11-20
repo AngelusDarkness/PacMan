@@ -11,9 +11,6 @@ public class PelletCell : CellData, ITriggerable {
     [SerializeField] private int _scoreMultiplier = 1;
 
     [NonSerialized] private BigPelletEvent _bigPelletEvent = new BigPelletEvent();
-    public override void Load() {
-        
-    }
     
     public void Trigger<T>(T param) {
 

@@ -27,6 +27,21 @@ public class PlayerMoveState : State {
 
     public override void UpdateState(float delta) {
         
+        if (Input.GetKeyDown(_playerController.inputData.upKeyCode)) {
+            Step(Directions.kUp);
+        }
+        
+        if (Input.GetKeyDown(_playerController.inputData.downKeyCode)) {
+            Step(Directions.kDown);
+        }
+        
+        if (Input.GetKeyDown(_playerController.inputData.leftKeyCode)) {
+            Step(Directions.kLeft);
+        }
+        
+        if (Input.GetKeyDown(_playerController.inputData.rightKeyCode)) {
+            Step(Directions.kRight);
+        }
     }
 
     public override void ExitState() {
@@ -41,29 +56,29 @@ public class PlayerMoveState : State {
 
         //Check for direction and limits
         switch (direction) {
-            case Directions.kUp:
-                var cell = _playerController.gridData.GetCell(xPos, yPos - 1);
-
-                if (cell.isWalkable) {
-
-                    _playerController.gridData.UpdateCellState(cell, _playerController.cellData);
-                    //Trigger cell if you have to.
-                    //var trigger = cell as ITriggerable;
-                    //trigger?.Trigger(_playerController.cellData);
-                }
-
+            case Directions.kUp: 
+                CheckStep(xPos, yPos - 1);
                 break;
             case Directions.kDown:
-               
+                CheckStep(xPos, yPos + 1);
                 break;
             case Directions.kLeft:
-               
+                CheckStep(xPos - 1, yPos);
                 break;
             case Directions.kRight:
-                 
-               
+                CheckStep(xPos + 1, yPos);
                 break;
         }
-        
+    }
+    
+    void CheckStep(int x, int y) {
+        var cell = _playerController.gridData.GetCell(x, y);
+        if (cell.isWalkable) {
+            _playerController.MoveTo(cell);
+                
+            //Trigger cell if you have to.
+            //var trigger = cell as ITriggerable;
+            //trigger?.Trigger(_playerController.cellData);
+        }
     }
 }

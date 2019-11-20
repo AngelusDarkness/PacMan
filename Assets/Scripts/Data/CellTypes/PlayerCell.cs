@@ -8,9 +8,6 @@ public class PlayerCell : CellData, ITriggerable, IWarpable {
     [SerializeField] private ScoreData _scoreData;
     [NonSerialized] private int _health = 3;
 
-    public override void Load() {
-        
-    }
     
     public void UpdateScore(int multiplier) {
         _scoreData.UpdateScore(multiplier);
