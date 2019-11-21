@@ -5,6 +5,7 @@ using Data;
 using Events;
 using UnityEngine;
 
+[CreateAssetMenu(fileName = "PelletCellData", menuName = "Pacman/Data/PelletCell", order = 106)]
 public class PelletCell : CellData, ITriggerable {
 
     [SerializeField] private bool _isBig;

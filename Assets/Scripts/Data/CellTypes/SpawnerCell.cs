@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
+[CreateAssetMenu(fileName = "SpawnerCellData", menuName = "Pacman/Data/SpawnerCell", order = 102)]
 public class SpawnerCell : CellData {
 
     [SerializeField] private GameObject _agentToSpawn;

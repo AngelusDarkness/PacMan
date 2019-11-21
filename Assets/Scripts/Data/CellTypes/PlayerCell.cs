@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Data;
 using UnityEngine;
 
+[CreateAssetMenu(fileName = "PlayerCellData", menuName = "Pacman/Data/PlayerCell", order = 101)]
 public class PlayerCell : CellData, ITriggerable, IWarpable {
     [SerializeField] private ScoreData _scoreData;
     [NonSerialized] private int _health = 3;

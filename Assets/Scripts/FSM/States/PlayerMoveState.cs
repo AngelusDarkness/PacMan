@@ -51,8 +51,8 @@ public class PlayerMoveState : State {
     
     
     void Step(Directions direction) {
-        var xPos = _currentLogicalX;
-        var yPos = _currentLogicalY;
+        var xPos = _playerController.cellData.logicalPosition.x;
+        var yPos = _playerController.cellData.logicalPosition.y;
 
         //Check for direction and limits
         switch (direction) {

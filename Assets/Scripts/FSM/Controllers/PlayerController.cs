@@ -11,7 +11,15 @@ public class PlayerController : FSM {
     // Start is called before the first frame update
     void Start()
     {
+        if (!gridData.IsLoaded) {
+            gridData.Load();
+        }
+
+        cellData.Load(gameObject);
+        cellData.oldData = ScriptableObject.CreateInstance<EmptyCell>();
+        cellData.oldData.logicalPosition = cellData.logicalPosition;
         
+        SwitchState(new PlayerMoveState(), this);
     }
 
     public void MoveTo(CellData destinationCell) {
@@ -37,6 +45,7 @@ public class PlayerController : FSM {
             yield return null;
         }
 
+        cellData.logicalPosition = destinationCell.logicalPosition;
         gridData.UpdateCellState(destinationCell, cellData);
     }
 
